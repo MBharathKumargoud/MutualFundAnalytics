@@ -1,40 +1,83 @@
 import pandas as pd
+import os
 
-# Load data
-df = pd.read_csv("data/raw/125497_nav.csv")
+# File path
+file_path = "data/raw/125497_nav.csv"
 
-# Convert date column
-df["date"] = pd.to_datetime(df["date"], format="%d-%m-%Y")
+print("=" * 60)
+print("DAY 1 - DATA INGESTION & QUALITY CHECK")
+print("=" * 60)
 
-# Sort oldest to newest
-df = df.sort_values("date")
+# Check file exists
+if not os.path.exists(file_path):
+    print(f"File not found: {file_path}")
+    exit()
 
-# Daily return %
-df["daily_return"] = df["nav"].pct_change() * 100
+# Load dataset
+df = pd.read_csv(file_path)
 
-# Save processed data
-df.to_csv("data/processed/nav_processed.csv", index=False)
+# Dataset information
+print("\nDATASET SHAPE")
+print(df.shape)
 
+print("\nCOLUMN DATA TYPES")
+print(df.dtypes)
+
+print("\nFIRST 5 ROWS")
 print(df.head())
-print("\nProcessed data saved successfully!")
 
-# CAGR
-start_nav = df["nav"].iloc[0]
-end_nav = df["nav"].iloc[-1]
+# Missing values
+print("\nMISSING VALUES")
+print(df.isnull().sum())
 
-years = (df["date"].iloc[-1] - df["date"].iloc[0]).days / 365.25
+# Duplicate rows
+print("\nDUPLICATE RECORDS")
+print(df.duplicated().sum())
 
-cagr = ((end_nav / start_nav) ** (1 / years) - 1) * 100
+# Convert date column if present
+if "date" in df.columns:
+    df["date"] = pd.to_datetime(
+        df["date"],
+        format="%d-%m-%Y",
+        errors="coerce"
+    )
 
-# Volatility
-volatility = df["daily_return"].std() * (252 ** 0.5)
+# NAV statistics
+if "nav" in df.columns:
+    df["nav"] = pd.to_numeric(df["nav"], errors="coerce")
 
-# Drawdown
-df["cum_max"] = df["nav"].cummax()
-df["drawdown"] = (df["nav"] - df["cum_max"]) / df["cum_max"] * 100
+    print("\nNAV SUMMARY")
+    print(df["nav"].describe())
 
-max_drawdown = df["drawdown"].min()
+# Date range
+if "date" in df.columns:
+    print("\nDATE RANGE")
+    print("Start Date:", df["date"].min())
+    print("End Date:", df["date"].max())
 
-print(f"\nCAGR: {cagr:.2f}%")
-print(f"Annualized Volatility: {volatility:.2f}%")
-print(f"Maximum Drawdown: {max_drawdown:.2f}%")
+# Data quality summary
+print("\n" + "=" * 60)
+print("DATA QUALITY SUMMARY")
+print("=" * 60)
+
+total_rows = len(df)
+total_columns = len(df.columns)
+missing_values = df.isnull().sum().sum()
+duplicate_rows = df.duplicated().sum()
+
+print(f"Rows              : {total_rows}")
+print(f"Columns           : {total_columns}")
+print(f"Missing Values    : {missing_values}")
+print(f"Duplicate Records : {duplicate_rows}")
+
+# Save cleaned dataset
+processed_path = "data/processed/nav_processed.csv"
+
+os.makedirs("data/processed", exist_ok=True)
+
+df.to_csv(processed_path, index=False)
+
+print(f"\nProcessed file saved to:")
+print(processed_path)
+
+print("\nDay 1 Data Ingestion Completed Successfully!")
