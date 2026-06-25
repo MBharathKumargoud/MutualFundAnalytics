@@ -1,0 +1,11 @@
+transaction_id,fund_id,transaction_date,transaction_type,amount,kyc_status,state,Unnamed: 7
+1,118632,15-01-2025,SIP,5000,Verified,Telangana,
+2,119092,20-01-2025,Lumpsum,25000,Verified,AndhraPradesh,
+3,119551,05-02-2025,SIP,3000,Pending,Karnataka,
+4,120503,10-02-2025,Redemption,10000,Verified,TamilNadu,
+5,120841,01-03-2025,SIP,5000,Verified,Maharashtra,
+6,125497,15-03-2025,Lumpsum,50000,Verified,Telangana,
+7,118632,05-04-2025,SIP,5000,Verified,Kerala,
+8,119092,12-04-2025,Redemption,8000,Verified,Karnataka,
+9,119551,01-05-2025,SIP,3000,Pending,AndhraPradesh,
+10,125497,20-05-2025,Lumpsum,40000,Verified,Telangana,
