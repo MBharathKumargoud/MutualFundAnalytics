@@ -1,0 +1,20 @@
+   GOVERNMENT POLYTECHNIC GADWAL (214)
+   GONPAD, JOGULAMBA GADWAL DIST.
+        TELANGANA -509125
+ 
+
+DEPARTMENT OF ELECTRONICS AND COMMUNICATION ENGINEERING CERTIFICATE
+This is to certify that the Project report entitled “HEALTH MONITORING SYSTEM BASED ON IOT”
+being submitted by
+G.AISHWARYA	23214-EC-045 B.ANITHA	23214-EC-036
+	G.NIKHIL	23214-EC-041
+	RENUKA	23214-EC-006
+	K.SHESHADRI	23214-EC-064
+In partial fulfillment of the requirements for the award of Diploma in Electronics and Communication Engineering, from State Board of Technical Education & Training a record of bonafide work carried out by them. The results presented in this project have been verified and are found to be satisfactory. The results embodied in this project have not been submitted to any other Institution or Board for the award of diploma.
+PRINCIPAL	Internal Guide	HOD
+(T.Ram Mohan M.tech)	(G.HARITHA B.Tech)	(CH.Rajaiah B.Tech)
+Submitted for the viva-voice held on  
+On
+HEALTH MONITORING SYSTEM BASED ON IOT
+Submitted in partial fulfillment of the requirements for the award of
+External Examiner	

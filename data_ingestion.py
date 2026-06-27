@@ -14,7 +14,7 @@ if not os.path.exists(file_path):
     exit()
 
 # Load dataset
-df = pd.read_csv(file_path)
+df = pd.read_csv(file_path) 
 
 # Dataset information
 print("\nDATASET SHAPE")
